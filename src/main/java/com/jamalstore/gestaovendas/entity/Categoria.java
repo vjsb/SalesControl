@@ -10,18 +10,18 @@ public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "codigo")
-    private Long codigo;
+    @Column(name = "id")
+    private Long id;
 
     @Column(name = "nome")
     private String nome;
 
-    public Long getCodigo() {
-        return codigo;
+    public Long getId() {
+        return id;
     }
 
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -37,11 +37,11 @@ public class Categoria {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Categoria categoria = (Categoria) o;
-        return Objects.equals(codigo, categoria.codigo) && Objects.equals(nome, categoria.nome);
+        return Objects.equals(id, categoria.id) && Objects.equals(nome, categoria.nome);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(codigo, nome);
+        return Objects.hash(id, nome);
     }
 }

@@ -11,8 +11,8 @@ public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "codigo")
-    private Long codigo;
+    @Column(name = "id")
+    private Long id;
 
     @Column(name = "descricao")
     private String descricao;
@@ -31,15 +31,15 @@ public class Produto {
 
     //um produto tem uma categoria
     @ManyToOne
-    @JoinColumn(name = "codigo_categoria", referencedColumnName = "codigo")
+    @JoinColumn(name = "codigo_categoria", referencedColumnName = "id")
     private Categoria categoria;
 
-    public Long getCodigo() {
-        return codigo;
+    public Long getId() {
+        return id;
     }
 
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getDescricao() {
@@ -95,11 +95,11 @@ public class Produto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Produto produto = (Produto) o;
-        return Objects.equals(codigo, produto.codigo) && Objects.equals(descricao, produto.descricao) && Objects.equals(quantidade, produto.quantidade) && Objects.equals(precoCusto, produto.precoCusto) && Objects.equals(precoVenda, produto.precoVenda) && Objects.equals(observacao, produto.observacao) && Objects.equals(categoria, produto.categoria);
+        return Objects.equals(id, produto.id) && Objects.equals(descricao, produto.descricao) && Objects.equals(quantidade, produto.quantidade) && Objects.equals(precoCusto, produto.precoCusto) && Objects.equals(precoVenda, produto.precoVenda) && Objects.equals(observacao, produto.observacao) && Objects.equals(categoria, produto.categoria);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(codigo, descricao, quantidade, precoCusto, precoVenda, observacao, categoria);
+        return Objects.hash(id, descricao, quantidade, precoCusto, precoVenda, observacao, categoria);
     }
 }
