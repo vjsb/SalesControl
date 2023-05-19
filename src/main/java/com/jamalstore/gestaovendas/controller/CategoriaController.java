@@ -4,7 +4,6 @@ import com.jamalstore.gestaovendas.entity.Categoria;
 import com.jamalstore.gestaovendas.service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,6 +33,12 @@ public class CategoriaController {
     public ResponseEntity<Categoria> salvar(@RequestBody Categoria categoria){
         Categoria categoriaSalva = categoriaService.salvar(categoria);
         return ResponseEntity.status(HttpStatus.CREATED).body(categoriaSalva);
+    }
+
+    @PutMapping("/{codigo}")
+    public ResponseEntity<Categoria> atualizar(@PathVariable Long codigo,
+                                               @RequestBody Categoria categoria){
+        return ResponseEntity.ok(categoriaService.atualizar(codigo, categoria));
     }
 
 }
