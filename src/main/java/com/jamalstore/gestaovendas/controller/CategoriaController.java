@@ -25,8 +25,8 @@ public class CategoriaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Categoria>> buscaPorId(@PathVariable Long id){
-        Optional<Categoria> categoria = categoriaService.buscaPorId(id);
+    public ResponseEntity<Optional<Categoria>> buscaPorId(@PathVariable Long codigo){
+        Optional<Categoria> categoria = categoriaService.buscaPorId(codigo);
         //ternario para avlidar se o response retorna 200 ou 404
         return categoria.isPresent() ? ResponseEntity.ok(categoria) : ResponseEntity.notFound().build();
     }
