@@ -2,6 +2,7 @@ package com.jamalstore.gestaovendas.controller;
 
 import com.jamalstore.gestaovendas.entity.Categoria;
 import com.jamalstore.gestaovendas.service.CategoriaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,13 +31,14 @@ public class CategoriaController {
     }
 
     @PostMapping
-    public ResponseEntity<Categoria> salvar(@RequestBody Categoria categoria){
+    public ResponseEntity<Categoria> salvar(@Valid @RequestBody Categoria categoria){
         Categoria categoriaSalva = categoriaService.salvar(categoria);
         return ResponseEntity.status(HttpStatus.CREATED).body(categoriaSalva);
     }
 
     @PutMapping("/{codigo}")
     public ResponseEntity<Categoria> atualizar(@PathVariable Long codigo,
+                                               @Valid
                                                @RequestBody Categoria categoria){
         return ResponseEntity.ok(categoriaService.atualizar(codigo, categoria));
     }

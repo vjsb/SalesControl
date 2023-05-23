@@ -1,6 +1,8 @@
 package com.jamalstore.gestaovendas.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.Length;
 
 import java.util.Objects;
 
@@ -14,6 +16,8 @@ public class Categoria {
     private Long codigo;
 
     @Column(name = "nome")
+    @NotBlank(message = "Nome")
+    @Length(min = 3, max = 50, message = "Nome")
     private String nome;
 
     public Long getCodigo() {
